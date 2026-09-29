@@ -1,0 +1,1 @@
+export function preferLatest<T extends {updatedAt?:string}>(local:T,remote:T):T{if(!local.updatedAt)return remote;if(!remote.updatedAt)return local;return new Date(local.updatedAt).getTime()>new Date(remote.updatedAt).getTime()?local:remote;}

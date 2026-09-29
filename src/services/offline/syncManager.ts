@@ -1,0 +1,4 @@
+import axios from 'axios';import {db} from './db';
+let running=false;
+export async function syncPendingChanges():Promise<number>{if(!navigator.onLine||running)return 0;running=true;let sent=0;try{const pending=(await db.syncQueue.toArray()).filter(item=>!item.synced).sort((a,b)=>a.createdAt.localeCompare(b.createdAt));for(const item of pending){try{if(import.meta.env.VITE_API_BASE_URL)await axios.post(`${import.meta.env.VITE_API_BASE_URL}/sync/${item.entity}`,{action:item.action,payload:item.payload});if(item.id!==undefined)await db.syncQueue.update(item.id,{synced:true});sent++;}catch{break;}}}finally{running=false;}return sent;}
+export function watchConnection(onSync?:(count:number)=>void):()=>void{const handle=()=>{void syncPendingChanges().then((count)=>onSync?.(count));};window.addEventListener('online',handle);return()=>window.removeEventListener('online',handle);}
