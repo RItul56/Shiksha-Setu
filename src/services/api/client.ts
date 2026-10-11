@@ -1,1 +1,3 @@
-import axios from 'axios';export const apiClient=axios.create({baseURL:import.meta.env.VITE_API_BASE_URL||'/api',timeout:12000,withCredentials:true,headers:{'Content-Type':'application/json'}});
+import axios from 'axios';
+export const apiClient=axios.create({baseURL:import.meta.env.VITE_API_BASE_URL||'/api',timeout:12000,withCredentials:true,withXSRFToken:true,xsrfCookieName:'csrf_token',xsrfHeaderName:'X-CSRF-Token'});
+apiClient.interceptors.request.use(async(config)=>{if(['post','put','patch','delete'].includes((config.method??'get').toLowerCase())&&typeof document!=='undefined'){await apiClient.get('/csrf');const cookie=document.cookie.split('; ').find(item=>item.startsWith('csrf_token='))?.slice('csrf_token='.length);if(cookie)config.headers.set('X-CSRF-Token',decodeURIComponent(cookie));}return config;});

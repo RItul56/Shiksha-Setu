@@ -3,3 +3,4 @@ export interface Lesson { id:string; courseId:string; title:string; module:strin
 export interface Scholarship { id:string; name:string; provider:string; amount:string; deadline:string; state:string; level:string; category:string; match:number; eligibility:string; }
 export interface SyncItem { id?:number; action:string; entity:string; payload:unknown; createdAt:string; synced:boolean; }
 export interface ChatMessage { id:string; role:'assistant'|'student'; text:string; }
+export interface TimetableItem{id:string;remoteId?:string;ownerId?:string;title:string;courseId:string|null;weekday:number;startMinute:number;durationMinutes:number;timezone:string;}

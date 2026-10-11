@@ -1,0 +1,92 @@
+/* Larger, more comfortable type for learning, planning and account flows. */
+:root { font-size: 16px; }
+body, input, button, select, textarea { font-size: 16px; }
+.page-content { font-size: 16px; }
+.app-shell :is(p) { font-size: 16px; line-height: 1.65; }
+.app-shell :is(small) { font-size: 14px; line-height: 1.5; }
+.app-shell :is(.eyebrow) { font-size: 12px; letter-spacing: .07em; }
+.app-shell :is(.nav-link, .text-link, .status) { font-size: 15px; }
+.app-shell :is(button, input, select, textarea) { font-size: 16px; }
+.page-content :is(h1) { font-size: clamp(28px, 3vw, 38px); }
+.page-content :is(h2) { font-size: clamp(21px, 2.4vw, 27px); }
+.page-content :is(h3) { font-size: 19px; }
+.auth-welcome>p { font-size: 17px; line-height: 1.7; }
+.auth-promise { font-size: 15px; }
+.auth-card h2 { font-size: 27px; }
+.auth-card>p { font-size: 16px; line-height: 1.55; }
+.auth-field>span, .auth-select-row label { font-size: 15px; }
+.auth-field input, .auth-select-row select { min-height: 48px; height: auto; padding: 11px 13px; font-size: 16px; }
+.field-error { font-size: 14px; line-height: 1.5; }
+.auth-options label, .auth-options .text-link, .auth-demo-note, .auth-switch { font-size: 14px; line-height: 1.5; }
+.consent-field { display: flex; align-items: flex-start; gap: 9px; margin: 14px 0; color: #606d80; font-size: 14px; line-height: 1.55; }
+.consent-field input { flex: 0 0 auto; margin-top: 3px; }
+.auth-submit { min-height: 50px; font-size: 16px; }
+.video-credit-note, .video-language, .video-channel, .video-card-copy p, .video-card-foot, .video-card-foot a { font-size: 13px; }
+.video-card-copy h3 { font-size: 18px; }
+.planner-form h2, .week-board h2 { font-size: 21px; }
+.planner-form .auth-field input, .planner-form .auth-field select { min-height: 46px; height: auto; }
+.planner-offline, .planner-timezone, .week-day-name, .day-open-note, .planner-session-time, .planner-session-copy small, .planner-guidance small, .admin-updated { font-size: 13px; }
+.planner-session-copy b, .planner-guidance b, .admin-guardrails b { font-size: 15px; }
+.video-grid { grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); }
+@media (max-width: 640px) {
+  .auth-layout { padding: 20px 16px 32px; }
+  .auth-card { padding: 22px 18px; }
+  .auth-welcome>p { font-size: 16px; }
+  .app-shell :is(p) { font-size: 15px; }
+}
+.account-service-status{font-size:13px;line-height:1.45;color:#4d775c;background:#eff8f0;padding:9px 11px;border-radius:8px;margin:10px 0 14px}.account-service-status.unavailable{color:#8c4b43;background:#fff2ef}.profile-photo{background-size:cover;background-position:center;color:transparent}.photo-upload{position:relative;overflow:hidden;min-height:40px;font-size:14px!important}.photo-upload input{position:absolute;inset:0;opacity:0;cursor:pointer}.profile-message{padding:10px 12px;background:#f1f5fb;border-radius:8px;color:#475d80}.profile-save-mobile{margin-top:12px}.mentor-request-form{display:grid;grid-template-columns:1fr 2fr;gap:12px;margin:14px 0}.mentor-request-form label{display:grid;gap:6px;font-weight:650;color:#526079}.mentor-request-form :is(input,select){min-height:44px;padding:9px 11px;border:1px solid #dce2eb;border-radius:8px;background:#fff}.empty-requests{padding:18px;border:1px dashed #dce2eb;border-radius:9px;color:#68758b}.chat-message .message-content p{font-size:16px;line-height:1.65}.chat-composer input{font-size:16px;min-height:48px}.suggestion-row button{font-size:13px;line-height:1.4}.video-resources{margin-top:28px}.profile-hero .profile-photo{flex:0 0 auto}
+@media(max-width:640px){.mentor-request-form{grid-template-columns:1fr}.profile-photo{width:72px;height:72px}}
+
+/* Friendly, high-readability type and color for younger learners. */
+.landing{font-family:'Trebuchet MS','Arial Rounded MT Bold',system-ui,sans-serif;color:#23314b;background:linear-gradient(180deg,#f4fbff 0%,#fff 38%,#fff9ed 100%)}
+.landing-nav{height:84px;border-bottom:2px solid #e8f1fb;background:rgba(255,255,255,.94)}
+.landing-nav .brand{font-size:20px}
+.landing-nav .brand small{font-size:12px;letter-spacing:.1em}
+.landing-nav .quiet-link{font-size:16px}
+.landing-nav .button{min-height:48px;font-size:16px;padding-inline:20px}
+.hero-copy .eyebrow,.landing .eyebrow{font-size:14px;font-weight:800;letter-spacing:.1em}
+.hero-copy h1{font-size:clamp(44px,5.2vw,72px);line-height:1.08;letter-spacing:-1.8px;color:#23314b}
+.hero-copy h1 span{color:#526eb3}
+.hero-copy>p{font-size:clamp(18px,1.5vw,21px);line-height:1.7;color:#52627c}
+.hero-actions{gap:14px;margin:28px 0}
+.hero-actions .button{min-height:54px;padding-inline:23px;border-radius:16px;font-size:17px}
+.hero-proof{font-size:14px;gap:12px;color:#53617a}
+.proof-avatars span{width:30px;height:30px;font-size:13px}
+.hero-art{transform:scale(1.04)}
+.landing-features{background:#f2f7ff;padding-top:76px;padding-bottom:80px}
+.section-heading h2,.journey-copy h2{font-size:clamp(28px,3vw,38px);line-height:1.2;letter-spacing:-.7px}
+.section-heading>p{font-size:16px;line-height:1.65;color:#53617a;max-width:340px}
+.feature-grid{gap:18px}
+.feature-card{border:2px solid #e6eef9;border-radius:20px;padding:22px;min-height:190px;box-shadow:0 8px 22px rgba(52,85,135,.06);transition:transform .18s ease,box-shadow .18s ease}
+.feature-card:hover{transform:translateY(-4px) rotate(-.3deg);box-shadow:0 14px 28px rgba(52,85,135,.12)}
+.feature-icon{width:48px;height:48px;border-radius:15px}
+.feature-card h3{font-size:19px;line-height:1.3;margin:16px 0 8px;color:#293752}
+.feature-card p{font-size:16px;line-height:1.6;color:#53617a;max-width:260px}
+.journey-copy>p,.landing-footer,.journey-section p{font-size:17px;line-height:1.7;color:#53617a}
+.landing-footer{padding-block:28px}
+.auth-screen{background:radial-gradient(ellipse at 12% 18%,#e3f6ff 0,transparent 34%),radial-gradient(ellipse at 88% 84%,#fff0d6 0,transparent 33%),#f8faff}
+.auth-layout{gap:clamp(36px,7vw,100px)}
+.auth-welcome h1{font-size:clamp(38px,4.2vw,58px);line-height:1.12;letter-spacing:-1.3px}
+.auth-welcome>p{font-size:19px;line-height:1.7;color:#53617a}
+.auth-promise{font-size:16px;line-height:1.5}
+.auth-card{border:2px solid #e6eef9;border-radius:24px;box-shadow:0 18px 50px rgba(49,75,118,.12)}
+.auth-card .eyebrow{font-size:13px}
+.auth-card h2{font-size:clamp(27px,3vw,34px);line-height:1.2}
+.auth-card>p{font-size:18px;line-height:1.5}
+.account-service-status{font-size:15px;line-height:1.5;padding:12px 14px;border-radius:14px}
+.auth-field>span,.auth-select-row label{font-size:16px}
+.auth-field input,.auth-select-row select{min-height:54px;border-radius:13px}
+.auth-submit{min-height:56px;border-radius:14px;font-size:18px}
+.auth-options label,.auth-options .text-link,.auth-demo-note,.auth-switch{font-size:15px}
+.page-content :is(h1){font-size:clamp(34px,3.5vw,46px)}
+.page-content :is(h2){font-size:clamp(25px,2.7vw,34px)}
+.page-content :is(h3){font-size:21px}
+.app-shell :is(p){font-size:17px;line-height:1.7}
+.app-shell :is(small){font-size:15px;line-height:1.55}
+.app-shell :is(.nav-link,.text-link,.status){font-size:16px}
+.app-shell :is(button,input,select,textarea){font-size:17px}
+.video-card-copy h3{font-size:21px}
+.video-credit-note,.video-language,.video-channel,.video-card-copy p,.video-card-foot,.video-card-foot a{font-size:15px;line-height:1.5}
+.suggestion-row button{font-size:15px}
+@media(max-width:760px){.landing-nav{height:72px}.landing-hero{padding:44px 22px 52px}.hero-copy h1{font-size:clamp(40px,10vw,56px)}.hero-copy>p{font-size:18px}.landing-features{padding:48px 22px}.section-heading{align-items:flex-start;flex-direction:column;gap:10px}.feature-grid{grid-template-columns:repeat(auto-fit,minmax(220px,1fr))}.auth-layout{padding:28px 18px 40px}.auth-welcome h1{font-size:39px}}
+@media(prefers-reduced-motion:reduce){.feature-card{transition:none}.feature-card:hover{transform:none}}

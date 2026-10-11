@@ -1,0 +1,24 @@
+import 'dotenv/config';
+import bcrypt from 'bcryptjs';
+import {pool} from './db.js';
+
+const courseRows=[
+ ['python','Python Fundamentals','Start coding with simple, practical lessons.','Technology','Beginner','6 hrs','ShikshaSetu educators'],
+ ['digital','Digital Literacy','Build confidence using the internet and digital tools.','Essential skills','Beginner','4 hrs','ShikshaSetu educators'],
+ ['math','Mathematics: Foundations','Understand everyday maths, one step at a time.','Mathematics','Intermediate','8 hrs','ShikshaSetu educators'],
+ ['english','English Communication','Speak, read and write with growing confidence.','Languages','Beginner','5 hrs','ShikshaSetu educators'],
+ ['computer','Computer Basics','Learn the essentials, from files to safe browsing.','Technology','Beginner','5 hrs','ShikshaSetu educators'],
+ ['programming','Programming Fundamentals','Explore logic and problem solving through code.','Technology','Intermediate','7 hrs','ShikshaSetu educators']
+];
+const lessonRows=[
+ ['python-1','python','How computers follow instructions','Module 1 · Getting started',8,'A computer follows instructions in a specific order. A program is a set of instructions that helps a computer complete a task. Think of a recipe: each step is an instruction.','कंप्यूटर निर्देशों का एक निश्चित क्रम में पालन करता है। प्रोग्राम निर्देशों का एक समूह है जो कंप्यूटर को काम पूरा करने में मदद करता है।',0],
+ ['python-2','python','Your first Python line','Module 1 · Getting started',10,'The print() function displays words on the screen. Try print("Namaste, duniya!"). Text inside quotation marks is called a string.','print() फ़ंक्शन स्क्रीन पर शब्द दिखाता है। print("नमस्ते, दुनिया!") आज़माएँ।',1],
+ ['python-3','python','Numbers and simple maths','Module 1 · Getting started',12,'Python can work like a calculator. Try 8 + 4, 10 - 3, or 6 * 7. The asterisk means multiplication.','Python एक कैलकुलेटर की तरह काम कर सकता है। 8 + 4, 10 - 3 या 6 * 7 आज़माएँ।',2],
+ ['digital-1','digital','Finding your way around a device','Module 1 · Your device',8,'Learn the parts of a phone or computer and how to open an app safely.','अपने फ़ोन या कंप्यूटर के हिस्सों और ऐप को सुरक्षित रूप से खोलना सीखें।',0],
+ ['math-1','math','Patterns in everyday numbers','Module 1 · Foundations',10,'Look for number patterns in prices, travel and daily routines.','कीमतों, यात्रा और रोज़मर्रा की गतिविधियों में संख्याओं के पैटर्न देखें।',0],
+ ['english-1','english','Everyday introductions','Module 1 · Speaking with confidence',8,'Practice a simple introduction and a few friendly questions.','अपना परिचय देना और कुछ सरल सवाल पूछना सीखें।',0],
+ ['computer-1','computer','Files and folders','Module 1 · Getting started',9,'Files hold information and folders help you organize them.','फ़ाइलों में जानकारी होती है और फ़ोल्डर उन्हें व्यवस्थित रखते हैं।',0],
+ ['programming-1','programming','Breaking a task into steps','Module 1 · Problem solving',12,'A clear program starts with a clear sequence of small steps.','एक स्पष्ट प्रोग्राम छोटे और क्रमबद्ध चरणों से शुरू होता है।',0]
+];
+async function seed(){await pool.query('BEGIN');try{for(const row of courseRows)await pool.query('INSERT INTO courses(id,title,description,category,level,duration,instructor) VALUES($1,$2,$3,$4,$5,$6,$7) ON CONFLICT(id) DO UPDATE SET title=excluded.title,description=excluded.description,category=excluded.category,level=excluded.level,duration=excluded.duration,instructor=excluded.instructor',row);for(const row of lessonRows)await pool.query('INSERT INTO lessons(id,course_id,title,module_name,duration_minutes,content,content_hi,position) VALUES($1,$2,$3,$4,$5,$6,$7,$8) ON CONFLICT(id) DO UPDATE SET title=excluded.title,module_name=excluded.module_name,duration_minutes=excluded.duration_minutes,content=excluded.content,content_hi=excluded.content_hi,position=excluded.position',row);await pool.query('COMMIT');}catch(error){await pool.query('ROLLBACK');throw error;}}
+try{await seed();const email=process.env.ADMIN_EMAIL?.trim().toLowerCase();const password=process.env.ADMIN_PASSWORD;if(email&&password){if(password.length<14)throw new Error('ADMIN_PASSWORD must be at least 14 characters; no default admin password is allowed.');const passwordHash=await bcrypt.hash(password,12);await pool.query("INSERT INTO users(email,password_hash,full_name,role,consent_at) VALUES($1,$2,'ShikshaSetu Administrator','admin',now()) ON CONFLICT(email) DO UPDATE SET password_hash=excluded.password_hash,role='admin',updated_at=now()",[email,passwordHash]);console.info(`Administrator account configured for ${email}.`);}else console.info('No administrator account created. Set ADMIN_EMAIL and ADMIN_PASSWORD explicitly to provision one.');console.info('Demo learning content seeded.');}catch(error){console.error('Seed failed:',error instanceof Error?error.message:error);process.exitCode=1;}finally{await pool.end();}

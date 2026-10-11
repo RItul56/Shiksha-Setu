@@ -1,4 +1,4 @@
-import type { Course,Lesson,Scholarship } from '../types';
+import type {Course,Lesson,Scholarship} from '../types';
 export const courses:Course[]=[
 {id:'python',title:'Python Fundamentals',description:'Start coding with simple, practical lessons.',category:'Technology',level:'Beginner',lessons:18,duration:'6 hrs',progress:72,color:'lavender',icon:'⌘',instructor:'Ananya Sharma',downloaded:true},
 {id:'digital',title:'Digital Literacy',description:'Build confidence using the internet and digital tools.',category:'Essential skills',level:'Beginner',lessons:12,duration:'4 hrs',progress:38,color:'mint',icon:'◉',instructor:'Rahul Verma'},

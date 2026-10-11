@@ -1,0 +1,14 @@
+export interface LearningVideo{videoId:string;title:string;channel:string;language:'English'|'Hindi';courseId:string;description:string;sourceUrl:string;}
+export const learningVideos:LearningVideo[]=[
+ {videoId:'rfscVS0vtbw',title:'Learn Python — Full Course for Beginners',channel:'freeCodeCamp.org',language:'English',courseId:'python',description:'Beginner Python programming course with examples.',sourceUrl:'https://www.youtube.com/watch?v=rfscVS0vtbw'},
+ {videoId:'gfDE2a7MKjA',title:'Python Tutorial for Beginners in Hindi',channel:'CodeWithHarry',language:'Hindi',courseId:'python',description:'Python fundamentals explained in Hindi.',sourceUrl:'https://www.youtube.com/watch?v=gfDE2a7MKjA'},
+ {videoId:'_LDR1_Prveo',title:'Origins of Algebra',channel:'Khan Academy',language:'English',courseId:'math',description:'An introduction to algebra and the patterns it describes.',sourceUrl:'https://www.youtube.com/watch?v=_LDR1_Prveo'},
+ {videoId:'kpCJyQ2usJ4',title:'The Beauty of Algebra',channel:'Khan Academy',language:'English',courseId:'math',description:'See how algebra gives us a language for mathematical patterns.',sourceUrl:'https://www.youtube.com/watch?v=kpCJyQ2usJ4'},
+ {videoId:'bq6GBbh3uhU',title:'Easy English Conversations: Daily Routine',channel:'BBC Learning English',language:'English',courseId:'english',description:'Practice listening to a natural everyday conversation.',sourceUrl:'https://www.youtube.com/watch?v=bq6GBbh3uhU'},
+ {videoId:'O5nskjZ_GoI',title:'Early Computing: Computer Science #1',channel:'CrashCourse',language:'English',courseId:'computer',description:'A visual introduction to early computing and how computers developed.',sourceUrl:'https://www.youtube.com/watch?v=O5nskjZ_GoI'},
+ {videoId:'dX8396ZmSPk',title:'HTML and CSS: Full Course for Beginners',channel:'freeCodeCamp.org',language:'English',courseId:'programming',description:'Build a foundation in web pages, markup, and styling.',sourceUrl:'https://www.youtube.com/watch?v=dX8396ZmSPk'},
+ {videoId:'a_iQb1lnAEQ',title:'Learn HTML and CSS: Full Course',channel:'freeCodeCamp.org',language:'English',courseId:'programming',description:'Another beginner-friendly guided course in building web pages.',sourceUrl:'https://www.youtube.com/watch?v=a_iQb1lnAEQ'},
+ {videoId:'O5nskjZ_GoI',title:'How computers work: Early Computing',channel:'CrashCourse',language:'English',courseId:'digital',description:'Learn how computing ideas became the devices we use today.',sourceUrl:'https://www.youtube.com/watch?v=O5nskjZ_GoI'},
+ {videoId:'dX8396ZmSPk',title:'Digital foundations: HTML and CSS basics',channel:'freeCodeCamp.org',language:'English',courseId:'digital',description:'An introduction to the building blocks behind websites.',sourceUrl:'https://www.youtube.com/watch?v=dX8396ZmSPk'}
+];
+export function videosForCourse(courseId:string){return learningVideos.filter(video=>video.courseId===courseId);}
